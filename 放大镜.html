@@ -34,13 +34,13 @@ window.onload=function(){
 		xiaotu.onmouseover=function(e){
 				var objimg=e.target;
 				var imgsrc=objimg.src.substring(objimg.src.lastIndexOf("/")).replace("1","2");
-				left.innerHTML="<img src=img"+imgsrc+">"
+				left.innerHTML="<img src="+imgsrc+">"
 			}
 		left.onmouseover=function(e){
 				right.hidden=null;			
 				var imgobj=	left.getElementsByTagName("img")[0].src		
 				var imgsrc=imgobj.substring(imgobj.lastIndexOf("/")).replace("2","3")		
-				right.innerHTML="<img src=img"+imgsrc+">"
+				right.innerHTML="<img src="+imgsrc+">"
 				var rightobj=right.getElementsByTagName("img")[0]
 				
 				this.onmousemove=function(e){
@@ -63,12 +63,12 @@ window.onload=function(){
 
 <body style="margin:0">
 <div id="left">
-<img src="img/blue_2.jpg">
+<img src="blue_2.jpg">
 </div>
 
 <div id="xiaotu">
-<img src="img/blue_1.jpg" class="img1">
-<img src="img/yellow_1.jpg" class="img2">
+<img src="blue_1.jpg" class="img1">
+<img src="yellow_1.jpg" class="img2">
 
 </div>
 <div id="right" hidden >
