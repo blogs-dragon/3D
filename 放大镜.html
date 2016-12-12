@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<style>
+#left{
+	 width:310px;
+	 height:310px;
+	 border:1px solid blue;	
+	}
+.img1,.img2{
+	border:2px dashed red;float:left;	border-radius:6px;
+	}
+.img2{
+		margin-left:10px;	
+	}
+#xiaotu{
+		margin-top:10px;	
+	}
+#right{
+		border:1px solid blue;	
+		height:310px;width:400px;position:absolute;top:0;left:320px;
+		overflow:hidden;
+		float:left;
+		
+	}
+</style>
+
+<script>
+window.onload=function(){
+		var img1=document.getElementsByClassName("img1")[0]	
+		var img2=document.getElementsByClassName("img2")[0]	
+		var xiaotu=document.getElementById("xiaotu")
+		var left=document.getElementById("left")
+		xiaotu.onmouseover=function(e){
+				var objimg=e.target;
+				var imgsrc=objimg.src.substring(objimg.src.lastIndexOf("/")).replace("1","2");
+				left.innerHTML="<img src=img"+imgsrc+">"
+			}
+		left.onmouseover=function(e){
+				right.hidden=null;			
+				var imgobj=	left.getElementsByTagName("img")[0].src		
+				var imgsrc=imgobj.substring(imgobj.lastIndexOf("/")).replace("2","3")		
+				right.innerHTML="<img src=img"+imgsrc+">"
+				var rightobj=right.getElementsByTagName("img")[0]
+				
+				this.onmousemove=function(e){
+				var x=e.offsetX/left.offsetWidth;
+				var y=e.offsetY/left.offsetHeight;
+				rightobj.style.position="absolute"
+				rightobj.style.left=-x*rightobj.offsetWidth+x*right.offsetWidth+"px"
+				rightobj.style.top=-y*rightobj.offsetHeight+y*right.offsetHeight+"px"
+				document.title=rightobj.style.left+"--"+rightobj.style.top
+				}
+			}
+		left.onmouseout=function(){
+				right.hidden="hidden"		
+			}
+	}
+</script>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body style="margin:0">
+<div id="left">
+<img src="img/blue_2.jpg">
+</div>
+
+<div id="xiaotu">
+<img src="img/blue_1.jpg" class="img1">
+<img src="img/yellow_1.jpg" class="img2">
+
+</div>
+<div id="right" hidden >
+</div>
+</body>
+</html>
